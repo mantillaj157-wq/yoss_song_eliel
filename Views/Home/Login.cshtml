@@ -1,0 +1,48 @@
+﻿@model SpotifyApp.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Iniciar Sesión - Yoss";
+}
+
+<div class="nav-custom-links shadow-sm">
+    <a asp-controller="Home" asp-action="Index">🏠 Inicio</a>
+    <a asp-controller="Home" asp-action="About">ℹ️ Acerca de nosotros</a>
+    <a asp-controller="Home" asp-action="Privacy">🔒 Privacidad</a>
+</div>
+
+<div class="sc-navbar shadow-sm">
+    <a asp-controller="Home" asp-action="Index" class="sc-brand">
+        <div class="sc-logo-badge">🎵</div>
+        <span>YOSS</span>
+    </a>
+</div>
+
+<div class="container my-5" style="max-width: 450px;">
+    <div class="spotify-card p-4 shadow-lg" style="background-color: #181818; border: 1px solid #282828; border-radius: 12px;">
+        <h2 class="text-center fw-bold mb-4" style="color: #ff5500;">Inicia Sesión en Yoss</h2>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger py-2 small text-center">@ViewBag.Error</div>
+        }
+
+        <form asp-action="Login" method="post">
+            <div class="mb-3">
+                <label class="form-label text-light">Correo electrónico</label>
+                <input type="email" asp-for="Email" class="form-control bg-dark text-light border-secondary" placeholder="admin@yoss.com o tu@correo.com" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label text-light">Contraseña</label>
+                <input type="password" asp-for="Password" class="form-control bg-dark text-light border-secondary" placeholder="••••••••" required />
+            </div>
+
+            <button type="submit" class="sc-btn-orange w-100 py-2 mt-2">Ingresar</button>
+        </form>
+
+        <div class="mt-4 p-3 rounded" style="background-color: #111; font-size: 12px; color: #888;">
+            <strong class="text-light">💡 Acceso de Prueba:</strong><br />
+            • <strong>Admin:</strong> admin@yoss.com / Admin123*<br />
+            • <strong>Usuario:</strong> Ingresa cualquier otro correo y contraseña.
+        </div>
+    </div>
+</div>

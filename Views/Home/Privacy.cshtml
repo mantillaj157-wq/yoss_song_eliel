@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "Política de Privacidad - Yoss";
+}
+
+<!-- Enlaces de navegación superiores con estilo y color -->
+<div class="nav-custom-links shadow-sm">
+    <a asp-controller="Home" asp-action="Index">🏠 Inicio</a>
+    <a asp-controller="Home" asp-action="About">ℹ️ Acerca de nosotros</a>
+    <a asp-controller="Home" asp-action="Privacy" style="color: #ff5500;">🔒 Privacidad</a>
+</div>
+
+<!-- Barra de Navegación superior SoundCloud Style (YOSS) -->
+<div class="sc-navbar shadow-sm">
+    <a asp-controller="Home" asp-action="Index" class="sc-brand">
+        <div class="sc-logo-badge">🎵</div>
+        <span>YOSS</span>
+    </a>
+    <div class="sc-nav-buttons">
+        <a href="#" class="sc-btn-light">Inicia sesión</a>
+        <a href="#" class="sc-btn-orange">Crea tu cuenta</a>
+    </div>
+</div>
+
+<div class="container my-5" style="max-width: 900px;">
+    <div class="spotify-card p-5 shadow-lg" style="background-color: #181818; border: 1px solid #282828; border-radius: 12px;">
+
+        <div class="text-center mb-4">
+            <span class="p-3 rounded-circle text-white fw-bold" style="background-color: #ff5500; font-size: 32px;">🔒</span>
+            <h1 class="fw-bold mt-3 text-white">Política de Privacidad y Protección de Datos</h1>
+            <p class="text-muted">Transparencia y seguridad en el manejo de estructuras de datos en memoria</p>
+        </div>
+
+        <hr class="border-secondary my-4 opacity-25" />
+
+        <div class="text-light fs-6" style="line-height: 1.8; color: #b3b3b3 !important;">
+
+            <h4 style="color: #ff5500;" class="fw-bold mt-4 mb-3">1. Almacenamiento en Memoria Volátil (RAM)</h4>
+            <p>
+                En <strong>Yoss Sound</strong>, la privacidad de los usuarios es una prioridad fundamental. Toda la información de las canciones, listas de reproducción y duraciones ingresadas en el gestor se almacena **exclusivamente en arreglos de memoria volátil (RAM)** de la aplicación ASP.NET Core MVC. Ningún dato personal o registro musical se guarda en bases de datos externas ni en discos rígidos.
+            </p>
+
+            <h4 style="color: #ff5500;" class="fw-bold mt-4 mb-3">2. Procesamiento de Comandos de Voz (Web Speech API)</h4>
+            <p>
+                Nuestra funcionalidad de reconocimiento de voz opera localmente a través de la interfaz nativa del navegador web (<strong>Web Speech API</strong>). Las señales de audio capturadas para los comandos por voz se procesan únicamente en tiempo de ejecución para reconocer intenciones de entrada (como agregar o buscar canciones) y **no son grabadas, almacenadas ni transmitidas** a servidores de terceros.
+            </p>
+
+            <h4 style="color: #ff5500;" class="fw-bold mt-4 mb-3">3. Cookies y Tecnologías de Rastreo</h4>
+            <p>
+                Esta plataforma académica no utiliza cookies de rastreo comercial ni píxeles publicitarios de seguimiento. Únicamente se emplean cookies técnicas de sesión nativas del framework .NET 8 para garantizar la correcta navegación entre las vistas de la aplicación.
+            </p>
+
+            <h4 style="color: #ff5500;" class="fw-bold mt-4 mb-3">4. Derechos de Autor y Uso Académico</h4>
+            <p>
+                <strong>Yoss Sound</strong> es un proyecto de software desarrollado con fines académicos e ilustrativos para la carrera de Ingeniería de Sistemas. Todas las marcas registradas, logotipos e imágenes utilizadas pertenecen a sus respectivos propietarios y se incluyen únicamente con propósitos educativos de diseño de interfaz.
+            </p>
+
+        </div>
+
+        <div class="mt-5 p-4 rounded text-center" style="background-color: #111111; border: 1px solid #222;">
+            <p class="text-muted mb-0" style="font-size: 13px;">
+                Si tienes preguntas relativas a esta política, puedes consultar al equipo de desarrollo en Cochabamba, Bolivia.
+            </p>
+        </div>
+
+        <div class="text-center mt-4">
+            <a asp-controller="Home" asp-action="Index" class="sc-btn-orange px-4 py-2 text-decoration-none">← Volver al Inicio</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Pie de Página (Footer estilo SoundCloud) -->
+<footer class="sc-footer">
+    <div class="sc-social-icons">
+        <a href="#" title="X (Twitter)">𝕏</a>
+        <a href="#" title="Discord">💬</a>
+        <a href="#" title="TikTok">🎵</a>
+        <a href="#" title="YouTube">▶️</a>
+        <a href="#" title="Facebook">📘</a>
+        <a href="#" title="Instagram">📸</a>
+    </div>
+    <div class="sc-footer-links">
+        <a href="#">Directorio</a>
+        <a href="#">Plataforma</a>
+        <a href="#">Artistas</a>
+        <a href="#">Desarrolladores</a>
+        <a href="#">Ayuda</a>
+        <a asp-controller="Home" asp-action="Privacy">Privacidad</a>
+        <a href="#">Términos</a>
+        <a href="#">Cookies</a>
+    </div>
+    <div class="sc-copyright">
+        &copy; 2026 Yoss Sound Inc. Cochabamba, Bolivia. Todos los derechos reservados.
+    </div>
+</footer>

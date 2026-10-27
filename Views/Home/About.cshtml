@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Acerca de nosotros - Yoss Sound";
+}
+
+<!-- Enlaces de navegación superiores con estilo y color -->
+<div class="nav-custom-links shadow-sm">
+    <a asp-controller="Home" asp-action="Index">🏠 Inicio</a>
+    <a asp-controller="Home" asp-action="About" style="color: #ff5500;">ℹ️ Acerca de nosotros</a>
+    <a asp-controller="Home" asp-action="Privacy">🔒 Privacidad</a>
+</div>
+
+<!-- Barra de Navegación superior SoundCloud Style -->
+<div class="sc-navbar shadow-sm">
+    <a asp-controller="Home" asp-action="Index" class="sc-brand">
+        <div class="sc-logo-badge">🎵</div>
+        <span>YOSS</span>
+    </a>
+    <div class="sc-nav-buttons">
+        <a href="#" class="sc-btn-light">Inicia sesión</a>
+        <a href="#" class="sc-btn-orange">Crea tu cuenta</a>
+    </div>
+</div>
+
+<div class="container my-5" style="max-width: 900px;">
+    <div class="spotify-card p-5 shadow-lg" style="background-color: #181818; border: 1px solid #282828; border-radius: 12px;">
+        <div class="text-center mb-4">
+            <span class="p-3 rounded-circle text-white fw-bold" style="background-color: #ff5500; font-size: 32px;">🇧🇴</span>
+            <h1 class="fw-bold mt-3 text-white">Acerca de Yoss Sound</h1>
+            <p class="text-muted">Innovación en Estructuras de Datos desde Cochabamba, Bolivia</p>
+        </div>
+
+        <hr class="border-secondary my-4 opacity-25" />
+
+        <div class="row g-4 text-light">
+            <div class="col-md-6">
+                <h4 style="color: #ff5500;" class="fw-bold mb-3">🎵 Nuestra Misión</h4>
+                <p style="color: #b3b3b3; font-size: 15px; line-height: 1.6;">
+                    <strong>Yoss Sound</strong> nace como un proyecto académico avanzado de <strong>Ingeniería de Sistemas</strong> en Cochabamba, Bolivia. Nuestro objetivo principal es fusionar el desarrollo web moderno en ASP.NET Core MVC con la implementación eficiente de estructuras de datos fundamentales en memoria.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <h4 style="color: #ff5500;" class="fw-bold mb-3">⚙️ Base Tecnológica</h4>
+                <p style="color: #b3b3b3; font-size: 15px; line-height: 1.6;">
+                    Implementamos arreglos estáticos y dinámicos personalizados, algoritmos clásicos de ordenamiento como <em>BubbleSort</em>, operaciones de desplazamiento de memoria (*shift-left*), y tecnologías vanguardistas del navegador como la <strong>Web Speech API</strong> para comandos por voz.
+                </p>
+            </div>
+        </div>
+
+        <div class="mt-5 p-4 rounded" style="background-color: #111111; border: 1px solid #222;">
+            <h5 class="text-white fw-bold mb-2">📍 Orgullosamente hecho en Bolivia</h5>
+            <p class="text-muted mb-0" style="font-size: 14px;">
+                Desarrollado en la ciudad de <strong>Cochabamba</strong> como solución optimizada para la gestión de listas de reproducción con un diseño limpio e inspirado en la cultura musical independiente de SoundCloud.
+            </p>
+        </div>
+
+        <div class="text-center mt-5">
+            <a asp-controller="Home" asp-action="Index" class="sc-btn-orange px-4 py-2 text-decoration-none">← Volver al Inicio</a>
+        </div>
+    </div>
+</div>
+
+<!-- Pie de Página (Footer estilo SoundCloud) -->
+<footer class="sc-footer">
+    <div class="sc-social-icons">
+        <a href="#" title="X (Twitter)">𝕏</a>
+        <a href="#" title="Discord">💬</a>
+        <a href="#" title="TikTok">🎵</a>
+        <a href="#" title="YouTube">▶️</a>
+        <a href="#" title="Facebook">📘</a>
+        <a href="#" title="Instagram">📸</a>
+    </div>
+    <div class="sc-footer-links">
+        <a href="#">Directorio</a>
+        <a href="#">Plataforma</a>
+        <a href="#">Artistas</a>
+        <a href="#">Desarrolladores</a>
+        <a href="#">Ayuda</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Términos</a>
+        <a href="#">Cookies</a>
+    </div>
+    <div class="sc-copyright">
+        &copy; 2026 Yoss Sound Inc. Cochabamba, Bolivia. Todos los derechos reservados.
+    </div>
+</footer>

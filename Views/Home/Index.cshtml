@@ -1,0 +1,170 @@
+﻿@{
+    ViewData["Title"] = "Yoss - Inicio";
+}
+
+<!-- Enlaces de navegación superiores con estilo y color -->
+<div class="nav-custom-links shadow-sm">
+    <a asp-controller="Home" asp-action="Index">🏠 Inicio</a>
+    <a asp-controller="Home" asp-action="About">ℹ️ Acerca de nosotros</a>
+    <a asp-controller="Home" asp-action="Privacy">🔒 Privacidad</a>
+</div>
+
+<!-- Barra de Navegación superior SoundCloud Style -->
+<div class="sc-navbar shadow-sm">
+    <a href="#" class="sc-brand">
+        <div class="sc-logo-badge">🎵</div>
+        <span>YOSS</span>
+    </a>
+    <div class="sc-nav-buttons">
+        <a asp-controller="Home" asp-action="Login" class="sc-btn-light">Inicia sesión</a>
+        <a href="#" class="sc-btn-orange">Crea tu cuenta</a>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <!-- Banner Hero Principal -->
+    <div class="sc-hero text-start">
+        <div style="max-width: 550px;">
+            <h1 class="text-white">CADA CANCIÓN VIVE AQUÍ.</h1>
+            <p class="text-light lead mb-4" style="font-size: 16px; opacity: 0.9;">
+                Descubre la biblioteca musical gestionada mediante estructuras de datos en memoria: todos los éxitos que conoces, algoritmos de ordenamiento y control por voz en un solo lugar.
+            </p>
+            <div class="d-flex gap-3">
+                <a asp-controller="Songs" asp-action="Index" class="sc-btn-orange px-4 py-2 fs-6">Entrar al Gestor</a>
+                <a asp-controller="Songs" asp-action="Index" class="sc-btn-light px-4 py-2 fs-6">Explorar Playlist</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barra de Búsqueda Estilo SoundCloud con Botón de Voz Integrado -->
+    <div class="sc-search-container position-relative">
+        <input type="text" id="homeSearchInput" class="sc-search-input pe-5" placeholder="🔍 Buscar artistas, grupos, pistas y podcasts por voz..." />
+        <button id="homeVoiceBtn" type="button" class="btn btn-sm position-absolute top-50 end-0 translate-middle-y me-3 text-white rounded-circle" style="background-color: #ff5500; width: 38px; height: 38px;" title="Buscar por voz">
+            🎙️
+        </button>
+    </div>
+    <div id="homeVoiceStatus" class="text-center text-muted small mt-2"></div>
+
+    <!-- Sección de Tendencias (Carrusel Desplazable) -->
+    <div class="trending-section mt-5">
+        <h2 class="trending-title">Escucha las tendencias</h2>
+        <div class="trending-scroll-container">
+            <!-- Pista 1 -->
+            <div class="trending-card">
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=300&q=80" alt="Cover 1" />
+                <div class="trending-card-body">
+                    <div class="trending-card-title">Midnight Bass</div>
+                    <div class="trending-card-artist">Electro Vibe</div>
+                </div>
+            </div>
+            <!-- Pista 2 -->
+            <div class="trending-card">
+                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=300&q=80" alt="Cover 2" />
+                <div class="trending-card-body">
+                    <div class="trending-card-title">Neon Lights</div>
+                    <div class="trending-card-artist">SynthWave 2026</div>
+                </div>
+            </div>
+            <!-- Pista 3 -->
+            <div class="trending-card">
+                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=300&q=80" alt="Cover 3" />
+                <div class="trending-card-body">
+                    <div class="trending-card-title">Summer Drop</div>
+                    <div class="trending-card-artist">DJ Yoss Official</div>
+                </div>
+            </div>
+            <!-- Pista 4 -->
+            <div class="trending-card">
+                <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=300&q=80" alt="Cover 4" />
+                <div class="trending-card-body">
+                    <div class="trending-card-title">Cyberpunk Session</div>
+                    <div class="trending-card-artist">Memory Leak</div>
+                </div>
+            </div>
+            <!-- Pista 5 -->
+            <div class="trending-card">
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=300&q=80" alt="Cover 5" />
+                <div class="trending-card-body">
+                    <div class="trending-card-title">Acoustic Memory</div>
+                    <div class="trending-card-artist">Data Structures Live</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pie de Página (Footer estilo SoundCloud) -->
+<footer class="sc-footer">
+    <div class="sc-social-icons">
+        <a href="#" title="X (Twitter)">𝕏</a>
+        <a href="#" title="Discord">💬</a>
+        <a href="#" title="TikTok">🎵</a>
+        <a href="#" title="YouTube">▶️</a>
+        <a href="#" title="Facebook">📘</a>
+        <a href="#" title="Instagram">📸</a>
+    </div>
+    <div class="sc-footer-links">
+        <a href="#">Directorio</a>
+        <a href="#">Plataforma</a>
+        <a href="#">Artistas</a>
+        <a href="#">Desarrolladores</a>
+        <a href="#">Ayuda</a>
+        <a asp-controller="Home" asp-action="Privacy">Privacidad</a>
+        <a href="#">Términos</a>
+        <a href="#">Cookies</a>
+    </div>
+    <div class="sc-copyright">
+        &copy; 2026 Yoss Sound Inc. Cochabamba, Bolivia. Todos los derechos reservados. Diseñado para Ingeniería de Sistemas.
+    </div>
+</footer>
+
+@section Scripts {
+    <script>
+        // Script Web Speech API para la barra de búsqueda del Inicio
+        const homeVoiceBtn = document.getElementById('homeVoiceBtn');
+        const homeSearchInput = document.getElementById('homeSearchInput');
+        const homeVoiceStatus = document.getElementById('homeVoiceStatus');
+
+        if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'es-ES';
+            recognition.continuous = false;
+            recognition.interimResults = false;
+
+            homeVoiceBtn.addEventListener('click', () => {
+                try {
+                    recognition.start();
+                    homeVoiceStatus.textContent = "🎙️ Escuchando búsqueda...";
+                    homeVoiceBtn.style.backgroundColor = "#e54b00";
+                } catch (e) {
+                    console.error(e);
+                }
+            });
+
+            recognition.onresult = (event) => {
+                const spokenText = event.results[0][0].transcript;
+                homeSearchInput.value = spokenText;
+                homeVoiceStatus.textContent = `✅ Búsqueda por voz: "${spokenText}"`;
+                homeVoiceBtn.style.backgroundColor = "#ff5500";
+
+                // Opcional: Redirigir al gestor pasando el filtro de búsqueda si se desea
+                setTimeout(() => {
+                    window.location.href = '@Url.Action("Index", "Songs")';
+                }, 1500);
+            };
+
+            recognition.onerror = (event) => {
+                homeVoiceStatus.textContent = "❌ Error en el reconocimiento de voz.";
+                homeVoiceBtn.style.backgroundColor = "#ff5500";
+            };
+
+            recognition.onend = () => {
+                homeVoiceBtn.style.backgroundColor = "#ff5500";
+            };
+        } else {
+            homeVoiceBtn.style.display = 'none';
+            homeVoiceStatus.textContent = "⚠️ Tu navegador no soporta Web Speech API.";
+        }
+    </script>
+}

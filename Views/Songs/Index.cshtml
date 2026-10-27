@@ -1,0 +1,163 @@
+﻿@model SpotifyApp.Models.Song[]
+
+@{
+    ViewData["Title"] = "SoundCloud Data Structures Edition";
+    string role = ViewBag.Role ?? "User";
+    bool isAdmin = role == "Admin";
+}
+
+<div class="container mt-4 mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="fw-bold" style="color: #ff5500;">SoundCloud Array Manager</h1>
+            <p class="text-muted">Estructura de Datos: Arreglos en Memoria (Capacidad: @ViewBag.Capacity | Ocupados: @ViewBag.Count)</p>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+            <span class="badge @(isAdmin ? "bg-danger" : "bg-secondary") p-2 fs-6">
+                Rol: @(isAdmin ? "👑 Administrador" : "👤 Usuario Lector")
+            </span>
+            <div>
+                <button id="speechBtn" class="btn btn-outline-dark">🎙️ Control por Voz</button>
+                <span id="speechStatus" class="ms-2 text-secondary small"></span>
+            </div>
+            <a asp-controller="Home" asp-action="Logout" class="btn btn-outline-secondary btn-sm">Cerrar Sesión</a>
+        </div>
+    </div>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-warning">@TempData["Error"]</div>
+    }
+
+    <div class="row">
+        <!-- Formulario Agregar con soporte de MP3 (SOLO ADMIN) -->
+        @if (isAdmin)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="spotify-card">
+                    <h4 class="mb-3 text-dark">Agregar Canción con Audio</h4>
+                    <form asp-action="Add" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Título</label>
+                            <input type="text" name="Title" class="form-control bg-white text-dark border" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Artista</label>
+                            <input type="text" name="Artist" class="form-control bg-white text-dark border" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Duración</label>
+                            <input type="text" name="Duration" class="form-control bg-white text-dark border" placeholder="3:45" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Archivo MP3 Real</label>
+                            <input type="file" name="audioFile" class="form-control bg-white text-dark border" accept=".mp3" />
+                        </div>
+                        <button type="submit" class="btn btn-spotify w-100">Guardar en Arreglo</button>
+                    </form>
+
+                    <hr class="border-secondary my-4 opacity-25" />
+
+                    <form id="sortForm" asp-action="Sort" method="post">
+                        <button type="submit" class="btn btn-outline-secondary w-100 btn-sm">Ordenar por Título (BubbleSort)</button>
+                    </form>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-4 mb-4">
+                <div class="spotify-card p-4 text-center">
+                    <h5>🔒 Modo Lectura</h5>
+                    <p class="text-muted small">Has ingresado como usuario predeterminado. Para agregar o eliminar canciones, inicia sesión como Administrador.</p>
+                    <a asp-controller="Home" asp-action="Login" class="sc-btn-orange d-inline-block px-3 py-1 text-decoration-none">Iniciar sesión Admin</a>
+                </div>
+            </div>
+        }
+
+        <!-- Tabla de Datos con Reproductor de Audio -->
+        <div class="col-md-8">
+            <div class="spotify-card">
+                <h4 class="mb-3 text-dark">Playlist Actual (Memoria)</h4>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead>
+                            <tr>
+                                <th>#ID</th>
+                                <th>Título</th>
+                                <th>Artista</th>
+                                <th>Duración</th>
+                                <th>Reproductor MP3</th>
+                                @if (isAdmin)
+                                {
+                                    <th>Acciones</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.Length > 0)
+                            {
+                                foreach (var song in Model)
+                                {
+                                    <tr>
+                                        <td>@song.Id</td>
+                                        <td class="fw-bold" style="color: #ff5500;">@song.Title</td>
+                                        <td>@song.Artist</td>
+                                        <td>@song.Duration</td>
+                                        <td>
+                                            @if (!string.IsNullOrEmpty(song.FilePath))
+                                            {
+                                                <audio controls style="height: 32px; width: 180px;">
+                                                    <source src="@song.FilePath" type="audio/mpeg" />
+                                                    Tu navegador no soporta audio.
+                                                </audio>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-muted small">Sin archivo MP3</span>
+                                            }
+                                        </td>
+                                        @if (isAdmin)
+                                        {
+                                            <td>
+                                                <form asp-action="Delete" method="post" style="display:inline;">
+                                                    <input type="hidden" name="id" value="@song.Id" />
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Borra y aplica desplazamiento">Eliminar</button>
+                                                </form>
+                                            </td>
+                                        }
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="@(isAdmin ? 6 : 5)" class="text-center text-muted">El arreglo está vacío.</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="player-bar">
+    <div class="d-flex align-items-center">
+        <div class="rounded me-3 d-flex align-items-center justify-content-center text-white fw-bold" style="width: 45px; height: 45px; background-color: #ff5500;">
+            SC
+        </div>
+        <div>
+            <div class="text-dark fw-bold small">SoundCloud Simulator Mode</div>
+            <div class="text-muted" style="font-size: 11px;">Estructura de Datos con .NET MVC</div>
+        </div>
+    </div>
+    <div class="small" style="color: #ff5500;">
+        🎙️ Web Speech API Integrada
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/speech.js"></script>
+}
